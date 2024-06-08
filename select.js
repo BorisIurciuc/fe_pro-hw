@@ -1,8 +1,31 @@
 const productList = document.querySelector('#container')
+const formItems = document.querySelector('#form')
+const loader = document.querySelector('#loader')
 
-async function fetchQuery(){
-    const res = await fetch('https://dummyjson.com/products')
+formItems.addEventListener('submit', e => {
+    e.preventDefault()
+
+    const amount = e.target.amount.value
+    e.target.amount.value = '';
+
+    while (productList.firstChild) {
+        productList.removeChild(productList.firstChild)
+    }
+
+    loader.classList.toggle('loader-hide')
+
+    setTimeout(() => {
+        fetchQuery(amount)
+    }, 3000)
+
+    console.log(amount);
+})
+
+async function fetchQuery(amountProd){
+    const res = await fetch(`https://dummyjson.com/products?limit=${amountProd}`)
     const data = await res.json()
+
+    loader.classList.toggle('loader-hide')
 
     data.products.map(product => {
         const productCard = document.createElement("div")
@@ -25,4 +48,3 @@ async function fetchQuery(){
     })
 }
 
-fetchQuery()
