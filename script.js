@@ -7,14 +7,14 @@ async function fetchQuery(){
     data.products.map(product => {
         const productCard = document.createElement('div')
         productCard.classList.add('productCart')
-        const cardTitle = document.createElement('h2')
+        const cardTitle = document.createElement('h3')
         cardTitle.textContent = product.title;
 
         const cardImage = document.createElement('img')
         cardImage.src = product.images[0] 
         cardImage.classList.add('cardImage')
 
-        const cardDescription = document.createElement('h4')
+        const cardDescription = document.createElement('p')
         cardDescription.textContent = product.description
          
         
