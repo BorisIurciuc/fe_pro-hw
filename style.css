@@ -46,7 +46,7 @@ main{
     background-color: white;
     box-shadow: 10px 5px 5px rgb(82, 81, 81);}
 
-.productCart{
+.productCard{
     padding: 5px;
     border: 2px solid black;
     background-color: rgb(252, 226, 199);

@@ -6,6 +6,11 @@ formItems.addEventListener('submit', e => {
     e.preventDefault()
 
     const amount = e.target.amount.value
+    if (!(/^[1-9][1-9]*$/.test(amount)) || amount > 20) {
+        alert('Error, input natutal number < 20')
+        e.target.amount.value = '';
+        return;
+    }
     e.target.amount.value = '';
 
     while (productList.firstChild) {
@@ -22,29 +27,37 @@ formItems.addEventListener('submit', e => {
 })
 
 async function fetchQuery(amountProd){
-    const res = await fetch(`https://dummyjson.com/products?limit=${amountProd}`)
-    const data = await res.json()
+    try{
+        const res = await fetch(`https://dummyjson.com/products?limit=${amountProd}`)
+        if(!res.ok) {
+            throw new Error('HTTP error')
+        }
+        
+        const data = await res.json()
 
-    loader.classList.toggle('loader-hide')
+        loader.classList.toggle('loader-hide')
 
-    data.products.map(product => {
-        const productCard = document.createElement("div")
-        productCard.classList.add('productCart')
+        data.products.map(product => {
+            const productCard = document.createElement("div")
+            productCard.classList.add('productCard')
 
-        const cardTitle = document.createElement('h3')
-        cardTitle.textContent = product.title;
+            const cardTitle = document.createElement('h3')
+            cardTitle.textContent = product.title;
 
-        const cardImage = document.createElement('img')
-        cardImage.src = product.images[0]
-        cardImage.classList.add('cardImage')
+            const cardImage = document.createElement('img')
+            cardImage.src = product.images[0]
+            cardImage.classList.add('cardImage')
 
-        const cardDescription = document.createElement('p')
-        cardDescription.textContent = product.description;
+            const cardDescription = document.createElement('p')
+            cardDescription.textContent = product.description;
 
 
-        productCard.append(cardTitle, cardImage, cardDescription)
-        productList.append(productCard)
+            productCard.append(cardTitle, cardImage, cardDescription)
+            productList.append(productCard)
+        })
+    } catch(error) {
+        console.error("Error fetch query", error);
+    }
 
-    })
 }
 

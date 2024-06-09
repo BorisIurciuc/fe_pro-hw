@@ -6,7 +6,7 @@ async function fetchQuery(){
 
     data.products.map(product => {
         const productCard = document.createElement('div')
-        productCard.classList.add('productCart')
+        productCard.classList.add('productCard')
         const cardTitle = document.createElement('h3')
         cardTitle.textContent = product.title;
 
