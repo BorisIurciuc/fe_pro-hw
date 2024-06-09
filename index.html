@@ -2,18 +2,28 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
     <script src="script.js" defer></script>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fetch</title>
+    <title>Products</title>
 </head>
 <body>
     <header>
-        <a href="select.html">Выбрать товары</a>
+        <a href="index.html">Главная</a>
     </header>
     <main>
         <h1>Products</h1>
-        <div class="container" id="container"></div>
+        <form id="form">
+            <input 
+                type="text" 
+                name="amount" 
+                placeholder="input number"
+                class="input">
+                <button type="submit">ok</button>
+        </form>
+        <div class="containerSelect" id="containerSelect"> </div>
+        <div class="loader loader-hide" id="loader"></div>
+        <div class="container container-hide" id="container"></div>
     </main>
     <footer></footer>
 </body>
