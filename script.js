@@ -3,9 +3,7 @@ const productListSelect = document.querySelector('#containerSelect')
 const formItems = document.querySelector('#form')
 const loader = document.querySelector('#loader')
 
-// loader.classList.toggle('loader-hide') ------------------
 productList.classList.toggle('container-hide')
-
 
 async function getAllProducts() {
     try {
@@ -38,7 +36,6 @@ async function getAllProducts() {
 }
 getAllProducts();
 
-
 formItems.addEventListener('submit', e => {
     e.preventDefault();
 
@@ -52,14 +49,12 @@ formItems.addEventListener('submit', e => {
     while (productListSelect .firstChild) {
         productListSelect.removeChild(productListSelect.firstChild)
     }
-    //    productList.classList.toggle('container-hide')
     productList.classList.add('container-hide')
     loader.classList.toggle('loader-hide')
 
     setTimeout(() => {
         getSelectProducts(amount)
     }, 2000)
-
 })
 
 async function getSelectProducts(amountProd) {
@@ -70,8 +65,6 @@ async function getSelectProducts(amountProd) {
         }
         const data = await res.json()
         loader.classList.toggle('loader-hide')
-
-        
 
         data.products.map(product => {
             const productCard = document.createElement('div')
@@ -89,11 +82,8 @@ async function getSelectProducts(amountProd) {
 
             productCard.append(cardTitle, cardImage, cardDescription)
             productListSelect.append(productCard)
-        
         })
-
     } catch (error) {
         console.error('fetch error', error)
     }
 }
-
