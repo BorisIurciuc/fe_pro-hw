@@ -1,6 +1,6 @@
 const productList = document.getElementById('container')
 console.log(productList);
-async function fetchQuery(){
+async function getAllProducts(){
     const res = await fetch('https://dummyjson.com/products')
     const data = await res.json()
 
@@ -22,4 +22,4 @@ async function fetchQuery(){
         productList.append(productCard)
     })
 }
-fetchQuery()
+getAllProducts()

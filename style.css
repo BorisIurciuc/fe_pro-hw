@@ -15,6 +15,7 @@ header{
     justify-content: center;
     align-items: end;
 }
+
 a {
     font-size: xx-large;
     color: rgb(118, 4, 4);
@@ -29,7 +30,25 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-  
+}
+
+.input {
+    border-radius: 5px;
+    border: 0.5px solid rgb(71, 2, 2);
+    &:hover{
+        background-color: beige;
+    }
+}
+
+button {
+    width: 50px;
+    background-color: rgb(252, 226, 199);
+    border-radius: 5px;
+    border: 0.5px solid rgb(71, 2, 2);
+    cursor: pointer;
+    &:hover{
+        background-color: orange;
+    }
 }
 
 .container{
@@ -42,7 +61,7 @@ main{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
     background-color: white;
     box-shadow: 10px 5px 5px rgb(82, 81, 81);}
 
@@ -92,21 +111,20 @@ p{
     position: absolute;
     top: 50%;
     left: 50%;
-  }
-  
-  .loader-hide {
-    display: none;
-  }
+}
 
-  @keyframes rotation {
+.loader-hide {
+    display: none;
+}
+
+@keyframes rotation {
     0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
     }
-  
     100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
     }
-  }
+}
 
 footer{
     width: 100%;

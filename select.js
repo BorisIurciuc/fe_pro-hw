@@ -6,8 +6,8 @@ formItems.addEventListener('submit', e => {
     e.preventDefault()
 
     const amount = e.target.amount.value
-    if (!(/^[1-9][1-9]*$/.test(amount)) || amount > 20) {
-        alert('Error, input natutal number < 20')
+    if (!(/^[1-9]\d*$/.test(amount)) || amount > 20) {
+        alert('Error, input natutal number <= 20')
         e.target.amount.value = '';
         return;
     }
@@ -20,13 +20,13 @@ formItems.addEventListener('submit', e => {
     loader.classList.toggle('loader-hide')
 
     setTimeout(() => {
-        fetchQuery(amount)
+        getSelectProducts(amount)
     }, 3000)
 
     console.log(amount);
 })
 
-async function fetchQuery(amountProd){
+async function getSelectProducts(amountProd){
     try{
         const res = await fetch(`https://dummyjson.com/products?limit=${amountProd}`)
         if(!res.ok) {
